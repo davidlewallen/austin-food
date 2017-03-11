@@ -1,15 +1,17 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
 
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackConfig = require('../webpack.config.js');
-var webpackCompiler = webpack(webpackConfig);
-var webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 
-var assetFolder = path.join(__dirname, '..', 'assets', 'public');
+const webpackConfig = require('../webpack.config.js');
 
-var app = express();
+const webpackCompiler = webpack(webpackConfig);
+const webpackHotMiddleware = require('webpack-hot-middleware');
+
+const assetFolder = path.join(__dirname, '..', 'assets', 'public');
+
+const app = express();
 
 app.use(express.static(assetFolder));
 app.use(webpackDevMiddleware(webpackCompiler, {
@@ -20,6 +22,10 @@ app.use(webpackHotMiddleware(webpackCompiler));
 
 app.get('/', function(req, res, next) {
   res.sendFile(assetFolder + '/index.html');
+});
+
+app.get('/test', function(req, res) {
+  res.send('test');
 });
 
 app.listen(4000, function() {
