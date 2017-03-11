@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    'webpack-hot-middleware/client',
     './assets/main.js',
   ],
   output: {
@@ -10,7 +10,7 @@ module.exports = {
     path: __dirname,
     publicPath: '/'
   },
-  devtool: '#source-map',
+  devtool: 'cheap-module-eval-source-map',
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

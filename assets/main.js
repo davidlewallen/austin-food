@@ -1,6 +1,6 @@
 function component() {
   var element = document.createElement('div');
-  element.innerHTML = "Hello Webpck12aaasdasda2";
+  element.innerHTML = "Change Me";
 
   return element;
 };
